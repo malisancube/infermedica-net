@@ -37,7 +37,7 @@ namespace ChatServiceTests
         [Fact]
         public void ParseTests()
         {
-            var response = inferMedicaClient.ParseAsync("i feel smoach pain but no couoghing today").Result;
+            var response = inferMedicaClient.ParseAsync("i feel stomach pain but no coughing today").Result;
             Assert.NotNull(response);
             Assert.True(response.Mentions.Count > 0);
         }
