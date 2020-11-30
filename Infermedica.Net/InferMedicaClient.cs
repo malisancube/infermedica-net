@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
-using Dagala.ChatService;
-using Newtonsoft.Json;
 
 namespace Infermedica.Net
 {
@@ -19,7 +19,7 @@ namespace Infermedica.Net
             client.DefaultRequestHeaders.Add("App-Id", settings.AppId);
             client.DefaultRequestHeaders.Add("App-Key", settings.AppKey);
             client.DefaultRequestHeaders.Add("Accept", "application/json");
-            client.DefaultRequestHeaders.Add("Dev-Mode", "true");
+            client.DefaultRequestHeaders.Add("Dev-Mode", settings.DevMode.ToString().ToLower());
             client.DefaultRequestHeaders.Add("User-Agent", settings.AppName ?? KnownConstants.ApplicationName);
             client.BaseAddress = new Uri(settings.AppUrl);
             _client = client;
@@ -40,7 +40,7 @@ namespace Infermedica.Net
             var response = await _client.GetAsync($"{_client.BaseAddress}/conditions");
             response.EnsureSuccessStatusCode();
             var result = await response.Content.ReadAsStringAsync();
-            var conditions = JsonConvert.DeserializeObject<List<Condition>>(result);
+            var conditions = JsonSerializer.Deserialize<List<Condition>>(result);
             return conditions;
         }
         
@@ -49,7 +49,7 @@ namespace Infermedica.Net
             var response = await _client.GetAsync($"{_client.BaseAddress}/conditions/{id}");
             response.EnsureSuccessStatusCode();
             var result = await response.Content.ReadAsStringAsync();
-            var condition = JsonConvert.DeserializeObject<Condition>(result);
+            var condition = JsonSerializer.Deserialize<Condition>(result);
             return condition;
         }
         
@@ -63,11 +63,11 @@ namespace Infermedica.Net
                 _client.DefaultRequestHeaders.Remove("Interview-Id");
             _client.DefaultRequestHeaders.Add("Interview-Id", interviewId);
             
-            var httpContent = new StringContent(JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json");
+            var httpContent = new StringContent(JsonSerializer.Serialize(request), Encoding.UTF8, "application/json");
             var response = await _client.PostAsync($"{_client.BaseAddress}/diagnosis", httpContent);
             response.EnsureSuccessStatusCode();
             var result = await response.Content.ReadAsStringAsync();
-            var diagnosisResponse = JsonConvert.DeserializeObject<DiagnosisResponse>(result);
+            var diagnosisResponse = JsonSerializer.Deserialize<DiagnosisResponse>(result);
             return diagnosisResponse;
         }
         
@@ -77,11 +77,11 @@ namespace Infermedica.Net
   
         public async Task<ExplainResponse> ExplainAsync(SuggestRequest request)
         {
-            var httpContent = new StringContent(JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json");
+            var httpContent = new StringContent(JsonSerializer.Serialize(request), Encoding.UTF8, "application/json");
             var response = await _client.PostAsync($"{_client.BaseAddress}/explain", httpContent);
             response.EnsureSuccessStatusCode();
             var result = await response.Content.ReadAsStringAsync();
-            var explainResponse = JsonConvert.DeserializeObject<ExplainResponse>(result);
+            var explainResponse = JsonSerializer.Deserialize<ExplainResponse>(result);
             return explainResponse;
         }
         
@@ -93,7 +93,7 @@ namespace Infermedica.Net
              var response = await _client.GetAsync($"{_client.BaseAddress}/symptoms");
              response.EnsureSuccessStatusCode();
              var result = await response.Content.ReadAsStringAsync();
-             var symptoms = JsonConvert.DeserializeObject<List<Symptom>>(result);
+             var symptoms = JsonSerializer.Deserialize<List<Symptom>>(result);
              return symptoms;
         }
         
@@ -102,7 +102,7 @@ namespace Infermedica.Net
             var response = await _client.GetAsync($"{_client.BaseAddress}/symptoms/{id}");
             response.EnsureSuccessStatusCode();
             var result = await response.Content.ReadAsStringAsync();
-            var symptom = JsonConvert.DeserializeObject<Symptom>(result);
+            var symptom = JsonSerializer.Deserialize<Symptom>(result);
             return symptom;
         }
         
@@ -115,7 +115,7 @@ namespace Infermedica.Net
             var response = await _client.GetAsync($"{_client.BaseAddress}/info");
             response.EnsureSuccessStatusCode();
             var result = await response.Content.ReadAsStringAsync();
-            var info = JsonConvert.DeserializeObject<ApiInfo>(result);
+            var info = JsonSerializer.Deserialize<ApiInfo>(result);
             return info;
         }
         
@@ -128,7 +128,7 @@ namespace Infermedica.Net
             var response = await _client.GetAsync($"{_client.BaseAddress}/lab_tests");
             response.EnsureSuccessStatusCode();
             var result = await response.Content.ReadAsStringAsync();
-            var labTests = JsonConvert.DeserializeObject<List<LabTest>>(result);
+            var labTests = JsonSerializer.Deserialize<List<LabTest>>(result);
             return labTests;
         }
         
@@ -137,7 +137,7 @@ namespace Infermedica.Net
             var response = await _client.GetAsync($"{_client.BaseAddress}/lab_tests/{id}");
             response.EnsureSuccessStatusCode();
             var result = await response.Content.ReadAsStringAsync();
-            var labTest = JsonConvert.DeserializeObject<LabTest>(result);
+            var labTest = JsonSerializer.Deserialize<LabTest>(result);
             return labTest;
         }
         
@@ -164,7 +164,7 @@ namespace Infermedica.Net
             var response = await _client.GetAsync(builder.Uri);
             response.EnsureSuccessStatusCode();
             var result = await response.Content.ReadAsStringAsync();
-            var parseResult = JsonConvert.DeserializeObject<SearchResult>(result);
+            var parseResult = JsonSerializer.Deserialize<SearchResult>(result);
             return parseResult;
         }
 
@@ -174,11 +174,11 @@ namespace Infermedica.Net
 
         public async Task<ParseResult> ParseAsync(string text)
         {
-            var httpContent = new StringContent(JsonConvert.SerializeObject(new { text }), Encoding.UTF8, "application/json");
+            var httpContent = new StringContent(JsonSerializer.Serialize(new { text }), Encoding.UTF8, "application/json");
             var response = await _client.PostAsync($"{_client.BaseAddress}/parse", httpContent);
             response.EnsureSuccessStatusCode();
             var result = await response.Content.ReadAsStringAsync();
-            var parseResult = JsonConvert.DeserializeObject<ParseResult>(result);
+            var parseResult = JsonSerializer.Deserialize<ParseResult>(result);
             return parseResult;
         }
 
@@ -191,7 +191,7 @@ namespace Infermedica.Net
             var response = await _client.GetAsync($"{_client.BaseAddress}/risk_factors");
             response.EnsureSuccessStatusCode();
             var result = await response.Content.ReadAsStringAsync();
-            var riskFactors = JsonConvert.DeserializeObject<List<RiskFactor>>(result);
+            var riskFactors = JsonSerializer.Deserialize<List<RiskFactor>>(result);
             return riskFactors;
         }
         
@@ -200,7 +200,7 @@ namespace Infermedica.Net
             var response = await _client.GetAsync($"{_client.BaseAddress}/risk_factors/{id}");
             response.EnsureSuccessStatusCode();
             var result = await response.Content.ReadAsStringAsync();
-            var riskFactors = JsonConvert.DeserializeObject<List<RiskFactor>>(result);
+            var riskFactors = JsonSerializer.Deserialize<List<RiskFactor>>(result);
             return riskFactors;
         }
 
@@ -224,7 +224,7 @@ namespace Infermedica.Net
             var response = await _client.GetAsync(builder.Uri);
             response.EnsureSuccessStatusCode();
             var result = await response.Content.ReadAsStringAsync();
-            var parseResult = JsonConvert.DeserializeObject<List<SearchResult>>(result);
+            var parseResult = JsonSerializer.Deserialize<List<SearchResult>>(result);
             return parseResult;
         }
 
@@ -234,11 +234,11 @@ namespace Infermedica.Net
 
         public async Task<List<SuggestResponse>> GetSuggestedSymptomsAsync(SuggestRequest suggestRequest)
         {
-            var httpContent = new StringContent(JsonConvert.SerializeObject(suggestRequest), Encoding.UTF8, "application/json");
+            var httpContent = new StringContent(JsonSerializer.Serialize(suggestRequest), Encoding.UTF8, "application/json");
             var response = await _client.PostAsync($"{_client.BaseAddress}/suggest", httpContent);
             response.EnsureSuccessStatusCode();
             var result = await response.Content.ReadAsStringAsync();
-            var suggestedSymptoms = JsonConvert.DeserializeObject<List<SuggestResponse>>(result);
+            var suggestedSymptoms = JsonSerializer.Deserialize<List<SuggestResponse>>(result);
             return suggestedSymptoms;
         }
 
@@ -247,11 +247,11 @@ namespace Infermedica.Net
         #region Triage
         public async Task<TriageResponse> GetTriageAsync(TriageRequest request)
         {
-            var httpContent = new StringContent(JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json");
+            var httpContent = new StringContent(JsonSerializer.Serialize(request), Encoding.UTF8, "application/json");
             var response = await _client.PostAsync($"{_client.BaseAddress}/triage", httpContent);
             response.EnsureSuccessStatusCode();
             var result = await response.Content.ReadAsStringAsync();
-            var triageResponse = JsonConvert.DeserializeObject<TriageResponse>(result);
+            var triageResponse = JsonSerializer.Deserialize<TriageResponse>(result);
             return triageResponse;
         }
         

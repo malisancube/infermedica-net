@@ -1,34 +1,34 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace Infermedica.Net
 {
     public class RiskFactor
     {
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
         
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
         
-        [JsonProperty("common_name")]
+        [JsonPropertyName("common_name")]
         public string CommonName { get; set; }
         
-        [JsonProperty("question")]
+        [JsonPropertyName("question")]
         public string Question { get; set; }
         
-        [JsonProperty("sex_filter")]
+        [JsonPropertyName("sex_filter")]
         public string SexFilter { get; set; }
         
-        [JsonProperty("category")] 
+        [JsonPropertyName("category")] 
         public string Category { get; set; }
 
-        [JsonProperty("extras")] 
+        [JsonPropertyName("extras")] 
         public Extras Extras { get; set; }
 
-        [JsonProperty("image_url")] 
+        [JsonPropertyName("image_url")] 
         public string ImageUrl { get; set; }
 
-        [JsonProperty("image_source")] 
+        [JsonPropertyName("image_source")] 
         public string ImageSource { get; set; }
     }
 }

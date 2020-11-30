@@ -1,6 +1,6 @@
 using Infermedica.Net;
 
-namespace Dagala.ChatService
+namespace Infermedica.Net
 {
     public class InferMedicaSettings
     {
@@ -11,5 +11,7 @@ namespace Dagala.ChatService
         public string AppId { get; set; }
 
         public string AppUrl { get; set; } = "https://api.infermedica.com/v2";
+
+        public bool DevMode { get; set; } = true;
     }
 }

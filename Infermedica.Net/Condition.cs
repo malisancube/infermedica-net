@@ -1,39 +1,38 @@
 using System.Collections.Generic;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
+using System.Text.Json.Serialization;
 
 namespace Infermedica.Net
 {
     public class Condition
     {
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
         
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
         
-        [JsonProperty("common_name")]
+        [JsonPropertyName("common_name")]
         public string CommonName { get; set; }
         
-        [JsonProperty("sex_filter")]
+        [JsonPropertyName("sex_filter")]
         public string SexFilter { get; set; }
         
-        [JsonProperty("categories")]
+        [JsonPropertyName("categories")]
         public List<string> Categories { get; set; }
         
-        [JsonProperty("prevalence")]
+        [JsonPropertyName("prevalence")]
         public string Prevalence { get; set; }
         
-        [JsonProperty("acuteness")]
+        [JsonPropertyName("acuteness")]
         public string Acuteness { get; set; }
         
-        [JsonProperty("severity")]
+        [JsonPropertyName("severity")]
         public string Severity { get; set; }
         
-        [JsonProperty("extras")]
+        [JsonPropertyName("extras")]
         public Extras Extras { get; set; }
         
-        [JsonProperty("triage_level")]
+        [JsonPropertyName("triage_level")]
         public string TriageLevel { get; set; }
     }
 }

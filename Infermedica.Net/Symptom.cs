@@ -1,47 +1,47 @@
 using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace Infermedica.Net
 {
     public class Symptom
     {
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
         
-        [JsonProperty("common_name")]
+        [JsonPropertyName("common_name")]
         public string CommonName { get; set; }
         
-        [JsonProperty("question")]
+        [JsonPropertyName("question")]
         public string Question { get; set; }
         
-        [JsonProperty("sex_filter")]
+        [JsonPropertyName("sex_filter")]
         public string SexFilter { get; set; }
         
-        [JsonProperty("category")]
+        [JsonPropertyName("category")]
         public string Category { get; set; }
         
-        [JsonProperty("seriousness")]
+        [JsonPropertyName("seriousness")]
         public string Seriousness { get; set; }
 
-        [JsonProperty("extras")]
+        [JsonPropertyName("extras")]
         public Extras Extras { get; set; }
         
-        [JsonProperty("children")]
+        [JsonPropertyName("children")]
         public List<SymptomChild> Children { get; set; }
         
-        [JsonProperty("image_url")]
+        [JsonPropertyName("image_url")]
         public object ImageUrl { get; set; }
         
-        [JsonProperty("image_source")]
+        [JsonPropertyName("image_source")]
         public object ImageSource { get; set; }
         
-        [JsonProperty("parent_id")]
+        [JsonPropertyName("parent_id")]
         public object ParentId { get; set; }
         
-        [JsonProperty("parent_relation")]
+        [JsonPropertyName("parent_relation")]
         public string ParentRelation { get; set; } 
     }
 }

@@ -12,7 +12,7 @@ namespace ConsoleChatApp
 
         public override void Render()
         {
-            Console.WriteLine("Hi, Welcome to Dagala Medical Advisor.");
+            Console.WriteLine("Hi, Welcome to MyApp Medical Advisor.");
             Console.WriteLine();
         }
 

@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Infermedica.Net;
-using Newtonsoft.Json;
 
 namespace ConsoleChatApp
 {
@@ -23,7 +23,7 @@ namespace ConsoleChatApp
 
         public override async Task Execute()
         {
-            var suggestRequest = JsonConvert.DeserializeObject<SuggestRequest>(_context.Patient.ToDiagnosis());
+            var suggestRequest = JsonSerializer.Deserialize<SuggestRequest>(_context.Patient.ToDiagnosis());
             symptoms = await _api.GetSuggestedSymptomsAsync(suggestRequest);
             var items = symptoms.Select(i => new ConsoleCheckListItem<SuggestResponse>(i.CommonName, symptomCallback, i));
             

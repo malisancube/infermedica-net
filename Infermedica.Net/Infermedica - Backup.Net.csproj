@@ -6,27 +6,17 @@
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
         <Authors>Malisa Ncube</Authors>
-        <Company>Malisa Ncube</Company>
-		<PackageTags>infermedica-net;Infermedica</PackageTags>
+        <Company>Malisa NcubeMalisa Ncube</Company>
+		<PackageTags>Infermedica</PackageTags>
         <Product>Infermedica.Net Library</Product>
-        <Description>Infermedica.Net Library For more information see https://github.com/malisancube/infermedica-net</Description>
+        <Description>Infermedica.Net Library</Description>
         <PackageProjectUrl>https://github.com/malisancube/infermedica-net</PackageProjectUrl>
         <RepositoryUrl>https://github.com/malisancube/infermedica-net.git</RepositoryUrl>
-		<License>https://github.com/malisancube/infermedica-net/blob/main/LICENSE</License>
-		<RepositoryType>git</RepositoryType>
-		<PackageLicenseFile>LICENSE</PackageLicenseFile>
-		<Copyright>Malisa Ncube</Copyright>
+        <Copyright>https://github.com/malisancube/infermedica-net/blob/main/LICENSE</Copyright>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
       <WarningLevel>4</WarningLevel>
     </PropertyGroup>
-
-    <ItemGroup>
-      <None Include="..\LICENSE">
-        <Pack>True</Pack>
-        <PackagePath></PackagePath>
-      </None>
-    </ItemGroup>
 
 </Project>

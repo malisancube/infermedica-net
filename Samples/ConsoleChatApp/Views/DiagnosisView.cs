@@ -1,8 +1,8 @@
 using System;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Infermedica.Net;
-using Newtonsoft.Json;
 
 namespace ConsoleChatApp
 {
@@ -23,7 +23,7 @@ namespace ConsoleChatApp
 
         public override async Task Execute()
         {
-            var diagnosisRequest = JsonConvert.DeserializeObject<DiagnosisRequest>(_context.Patient.ToDiagnosis());
+            var diagnosisRequest = JsonSerializer.Deserialize<DiagnosisRequest>(_context.Patient.ToDiagnosis());
             var response = await _api.GetDiagnosisAsync(_context.InterviewId, diagnosisRequest);
             
             if (response.Question != null 

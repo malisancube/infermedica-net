@@ -1,10 +1,10 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace Infermedica.Net
 {
     public class DiagnosisExtras
     {
-        [JsonProperty("disable_groups")]
+        [JsonPropertyName("disable_groups")]
         public bool? DisableGroups { get; set; }
     }
 }

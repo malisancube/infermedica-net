@@ -1,23 +1,23 @@
 using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace Infermedica.Net
 {
     public class LabTest
     {
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
         
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
         
-        [JsonProperty("common_name")]
+        [JsonPropertyName("common_name")]
         public string CommonName { get; set; }
         
-        [JsonProperty("category")]
+        [JsonPropertyName("category")]
         public string Category { get; set; }
         
-        [JsonProperty("results")]
+        [JsonPropertyName("results")]
         public List<LabResult> Results { get; set; }
     }
     

@@ -1,20 +1,20 @@
 using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace Infermedica.Net
 {
     public class Question
     {
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
         
-        [JsonProperty("text")]
+        [JsonPropertyName("text")]
         public string Text { get; set; }
         
-        [JsonProperty("items")]
+        [JsonPropertyName("items")]
         public List<QuestionItem> Items { get; set; }
         
-        [JsonProperty("extras")]
+        [JsonPropertyName("extras")]
         public Extras Extras { get; set; }
     }
 }

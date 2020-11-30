@@ -1,10 +1,10 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace Infermedica.Net
 {
     public class DiagnosisRequest : TriageRequest
     {
-        [JsonProperty("extras")]
+        [JsonPropertyName("extras")]
         public DiagnosisExtras Extras { get; set; }
     }
 }

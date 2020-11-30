@@ -1,25 +1,25 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace Infermedica.Net
 {
     public class Mention
     {
-        [JsonProperty("common_name")]
+        [JsonPropertyName("common_name")]
         public string CommonName { get; set; }
         
-        [JsonProperty("orth")]
+        [JsonPropertyName("orth")]
         public string Orth { get; set; }
         
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
         
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
         
-        [JsonProperty("choice_id")]
+        [JsonPropertyName("choice_id")]
         public string ChoiceId { get; set; }
         
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
     }
 }

@@ -2,6 +2,6 @@ namespace Infermedica.Net
 {
     public class KnownConstants
     {
-        public const string ApplicationName = "DagalaApp";
+        public const string ApplicationName = "MyApp";
     }
 }

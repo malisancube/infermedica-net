@@ -1,14 +1,14 @@
 using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace Infermedica.Net
 {
     public class ParseResult
     {
-        [JsonProperty("mentions")]
+        [JsonPropertyName("mentions")]
         public List<Mention> Mentions { get; set; }
         
-        [JsonProperty("obvious")]
+        [JsonPropertyName("obvious")]
         public bool Obvious { get; set; }
     }
 }

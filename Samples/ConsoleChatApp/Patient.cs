@@ -1,6 +1,6 @@
 using System.Collections.Generic;
+using System.Text.Json;
 using Infermedica.Net;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace ConsoleChatApp
@@ -48,20 +48,5 @@ namespace ConsoleChatApp
             }
             return patient.ToString();
         }
-    }
-
-    public class MenuSymptom
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-        
-        [JsonProperty("choice_id")]
-        public string ChoiceId { get; set; }
-        
-        [JsonProperty("initial")]
-        public bool Initial { get; set; }
-        
-        [JsonProperty("related")]
-        public bool Related { get; set; }
     }
 }

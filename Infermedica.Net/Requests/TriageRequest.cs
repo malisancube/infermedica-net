@@ -1,17 +1,17 @@
 using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace Infermedica.Net
 {
     public class TriageRequest
     {
-        [JsonProperty("sex")]
+        [JsonPropertyName("sex")]
         public string Sex { get; set; }
         
-        [JsonProperty("age")]
+        [JsonPropertyName("age")]
         public int Age { get; set; }
         
-        [JsonProperty("evidence")]
+        [JsonPropertyName("evidence")]
         public List<Evidence> Evidence { get; set; }
     }
 }

@@ -4,9 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Dagala.ChatService;
 using Infermedica.Net;
-using Newtonsoft.Json;
 
 namespace ConsoleChatApp
 {
@@ -42,8 +40,8 @@ namespace ConsoleChatApp
             var settings = new InferMedicaSettings
             {
                 AppUrl = "https://api.infermedica.com/v2",
-                AppId = "XXXXXX",
-                AppKey = "XXXXXXXXXXXX"
+                AppId = "044436d2",
+                AppKey = "ca1d41a07e3b813dd65fa0fb5803bceb"
             };
             _inferMedicaClient = new InferMedicaClient(client, settings);
         }

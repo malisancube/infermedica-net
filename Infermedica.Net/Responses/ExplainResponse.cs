@@ -1,17 +1,17 @@
 using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace Infermedica.Net
 {
     public class ExplainResponse
     {
-        [JsonProperty("supporting_evidence")]
+        [JsonPropertyName("supporting_evidence")]
         public List<SupportingEvidence> SupportingEvidence { get; set; }
         
-        [JsonProperty("conflicting_evidence")]
+        [JsonPropertyName("conflicting_evidence")]
         public List<ConflictingEvidence> ConflictingEvidence { get; set; }
         
-        [JsonProperty("unconfirmed_evidence")]
+        [JsonPropertyName("unconfirmed_evidence")]
         public List<UnconfirmedEvidence> UnconfirmedEvidence { get; set; }
     }
 }

@@ -1,14 +1,14 @@
 using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace Infermedica.Net
 {
     public class SuggestRequest : TriageRequest
     {
-        [JsonProperty("extras")]
+        [JsonPropertyName("extras")]
         public Extras Extras { get; set; }
         
-        [JsonProperty("evaluated_at")]
+        [JsonPropertyName("evaluated_at")]
         public string EvaluatedAt { get; set; }
     }
 }

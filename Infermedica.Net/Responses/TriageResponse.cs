@@ -1,14 +1,14 @@
 using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace Infermedica.Net
 {
     public class TriageResponse
     {
-        [JsonProperty("triage_level")]
+        [JsonPropertyName("triage_level")]
         public string TriageLevel { get; set; }
         
-        [JsonProperty("serious")]
+        [JsonPropertyName("serious")]
         public List<Serious> Serious { get; set; }
     }
 }
