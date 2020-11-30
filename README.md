@@ -7,7 +7,7 @@ See the sample for usage
 
 ### Demo
 
-![](\docs\demo.gif)
+![](/docs/demo.gif)
 
 ### Contributing
 
