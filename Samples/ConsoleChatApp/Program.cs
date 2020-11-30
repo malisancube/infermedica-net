@@ -40,8 +40,8 @@ namespace ConsoleChatApp
             var settings = new InferMedicaSettings
             {
                 AppUrl = "https://api.infermedica.com/v2",
-                AppId = "044436d2",
-                AppKey = "ca1d41a07e3b813dd65fa0fb5803bceb"
+                AppId = "xxx",
+                AppKey = "xxxxxx"
             };
             _inferMedicaClient = new InferMedicaClient(client, settings);
         }
